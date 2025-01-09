@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+// взяли из документации
+
 export default function RootLayout({ children }: {
   children: ReactNode
 }) {

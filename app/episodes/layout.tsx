@@ -12,5 +12,3 @@ const Layout: NextPage<PropsWithChildren> = ({ children }) => {
 };
 
 export default Layout;
-
-;

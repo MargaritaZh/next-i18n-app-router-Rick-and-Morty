@@ -1,7 +1,9 @@
 "use client"
 
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
-import { NextPageWithLayout } from "pages/_app";
+import { NextPageWithLayout } from "./page";
+
+
 
 const Custom404: NextPageWithLayout = () => {
   return (

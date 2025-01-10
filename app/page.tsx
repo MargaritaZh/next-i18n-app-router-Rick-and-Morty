@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { PageWrapper } from "../components/PageWrapper/PageWrapper";
-import { NextPageWithLayout } from "../pages/_app";
+import { NextPage } from "next";
+import { ReactElement, ReactNode } from "react";
+
+export type NextPageWithLayout<P = {}> = NextPage<P> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 const Home: NextPageWithLayout = () => {
 

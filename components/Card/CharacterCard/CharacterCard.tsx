@@ -25,12 +25,12 @@ export const CharacterCard = (props: PropsType) => {
     <Card name={name}>
       <Status status={status} src={statusImages[status]} />
       <Link href={`/characters/${id}`}>
-        <ImageBlock src={image} alt={name} width={300} height={300} priority />
+        <Image  src={image} alt={name} width={300} height={300} priority />
       </Link>
     </Card>
   );
 };
 
-const ImageBlock = styled(Image)`
-  object-fit: cover;
-`;
+// const ImageBlock = styled(Image)`
+//   object-fit: cover;
+// `;

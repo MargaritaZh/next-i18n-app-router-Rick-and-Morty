@@ -1,17 +1,17 @@
 import { CharacterType, ResponseType } from "../../../assets/api/rick-and-morty-api";
 import { PageWrapper } from "../../../components/PageWrapper/PageWrapper";
-import styled from "styled-components";
 import process from "node:process";
 
 
 /////////////////////////////////////
+
+//НАМ НУЖНО СГЕНИРИРОВАТЬ ПУТИ, СКОЛЬКО СТРАНИЦ НАМ ВЫДАСТ 20 СЕВЕР ОНИ ЗАКЭШИРУЮТСЯ, И ЕСЛИ 25, он отдельно сгенерируется и тоже закэшируется
+
+//делаем запрос
 const getCharacters = async (): Promise<ResponseType<CharacterType>> => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_RICK_API_URL}/character`);
   return await res.json();
 };
-
-//НАМ НУЖНО СГЕНИРИРОВАТЬ ПУТИ, СКОЛЬКО СТРАНИЦ НАМ ВЫДАСТ 20 СЕВЕР ОНИ ЗАКЭШИРУЮТСЯ, И ЕСЛИ 25, он отдельно сгенерируется и тоже закэшируется
-
 
 //для этого экспортируем функцию со спец названием generateStaticParams
 export async function generateStaticParams() {
@@ -24,21 +24,27 @@ export async function generateStaticParams() {
 }
 
 ///////////////////////////////////////
+
+//2 ДИНАМИЧЕСКИ ИЗМЕНЯТЬ НАЗВАНИЕ СТРАНИЦЫ в браузере
+export async function generateMetadata({params}:{params:{id:string}}){
+  return {
+    title: params.id,
+    description:" jjherjgnrjnh",
+  }
+}
+
+////////////////////////////////////
+
+
 //в компаненту приходит парамерт params из него мы можем достать id
 const Character = ({params}:{params:{id:string}}) => {
 
   return (
     <PageWrapper>
-      <Container> ID: {params.id}</Container>
+      <div> ID: {params.id}</div>
     </PageWrapper>
   );
 };
 
 export default Character;
 
-// styles
-const Container = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 20px;
-`;
